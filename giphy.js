@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 
         // Grabbing and storing the data-animal property value from the button
+        
         var taco = $(this).attr("data-taco");
 
         // Constructing a queryURL using the animal name
@@ -40,8 +41,8 @@ $(document).ready(function () {
                     tacoImage.attr("src", results[i].images.fixed_height.url);
 
                     // Appending the paragraph and image tag to the animalDiv
-                    tacoDiv.append(p);
-                    tacoDiv.append(tacoImage);
+                    tacoDiv.prepend(p);
+                    tacoDiv.prepend(tacoImage);
 
                     // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
                     $("#tacoBar").prepend(tacoDiv);

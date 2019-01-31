@@ -10,40 +10,47 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
-    
+
 </head>
 
 <body class="bg">
     <div class="container">
         <!--  Left side -->
-        <div class="row">
-                <button data-taco="taco">Taco</button>
-                <button data-taco="taco tuesday">Yum</button>
-                <button data-taco="taco bell">MMMMmmm</button>
+        <div class="row" id="top-row">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-gifbutton" data-taco="taco">Tacos</button>
+                <button type="button" class="btn btn-gifbutton" data-taco="taco tuesday">Tacos</button>
+                <button type="button" class="btn btn-gifbutton" data-taco="taco bell">Tacos</button>
+            </div>
+            <!-- Form fields -->
+            <form>
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="text-box" placeholder="Add your favorite taco!">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn-info" id="add-tacos">Add Taco</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
             <div class="col-sm-12" id="tacoBar">
             </div>
         </div>
         <section class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="leftSideBar">
                 <div class="container">
                     <div class="card-columns">
+
+
                     </div>
                 </div>
             </div>
             <!--  Right side -->
-            <div class="col-md-4" id="sideBar">
+            <div class="col-md-4" id="rightsideBar">
                 <div class="row">
-                    <div class="col-md-12">
-                        <!-- Form fields -->
-                        <form>
+                    <div class="col-md-12" id="bottomBar">
 
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="text-box" placeholder="Add your favorite taco!">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn-info" id="add-tacos">Add Taco</button>
-                                </div>
-                            </div>
-                        </form>
 
 
 
