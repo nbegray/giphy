@@ -1,47 +1,82 @@
 $(document).ready(function () {
-    //=====Array======//
-    var taco = ["street taco", "taco bell", "del taco", "crunchy taco", "soft taco", "taco tuesday", "taco time", "chicken taco", "taco cat", "taco llama"];
+    var taco = ["lettuce", "taco shells", "taco", "taco cat", "crazy taco", "taco time", "taco tuesday", "taco bell", "taco dog", "techno taco"];
 
-    // ==== adds event listener to entire page ====//
-    $(document).on("click", "#taco-button", function () {
+    $("button").on("click", function (event) {
+        event.preventDefault();
 
-        
 
-        // checked if html and js were linked - it worked!//
-        console.log(taco);
+        // Grabbing and storing the data-animal property value from the button
+        var taco = $(this).attr("data-taco");
+
+        // Constructing a queryURL using the animal name
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+            taco + "&api_key=eXqnotQ2JPHmZ84RXN92zcNRkXomTCqD&limit=10";
+
+        // Performing an AJAX request with the queryURL
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            // After data comes back from the request
+            .then(function (response) {
+                console.log(queryURL);
+
+                console.log(response);
+                // storing the data from the AJAX request in the results variable
+                var results = response.data;
+
+                // Looping through each result item
+                for (var i = 0; i < results.length; i++) {
+
+                    // Creating and storing a div tag
+                    var tacoDiv = $("<div>");
+
+                    // Creating a paragraph tag with the result item's rating
+                    var p = $("<p>").text("Rating: " + results[i].rating);
+
+                    // Creating and storing an image tag
+                    var tacoImage = $("<img>");
+                    // Setting the src attribute of the image to a property pulled off the result item
+                    tacoImage.attr("src", results[i].images.fixed_height.url);
+
+                    // Appending the paragraph and image tag to the animalDiv
+                    tacoDiv.append(p);
+                    tacoDiv.append(tacoImage);
+
+                    // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+                    $("#tacoBar").prepend(tacoDiv);
+                }
+            });
+
+
+
+
+
+        // function buildTaco() {
+        //     for (i = 0; i < taco.length; i++) {
+        //         var newArr = taco[i];
+        //         var tacoButton = $("<button>" + taco[i] + "</button>");
+        //         // tacoButton.addClass("btn btn-primary");
+        //         // tacoButton.attr("taco-button", newArr);
+        //         // tacoButton.attr("type", "button");
+        //         // tacoButton.append(newArr);
+        //         $("taco-bar").append(tacoButton);
+        //     }
+
+        // };
+        // $("#add-tacos").on("click", function (event) {
+        //     event.preventDefault();
+        //     var newTaco = $("#add-tacos").val().trim();
+        //     taco.push(newTaco);
+        //     $("#add-tacos").val("");
+        //     buildTaco();
+        // console.log("This is working");
+        // buildTaco();
+
+        // });
+        })
+
+
+
+
     });
-    //tells application where to find the gif images for the application
-
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        taco + "&api_key=eXqnotQ2JPHmZ84RXN92zcNRkXomTCqD&limit=10";
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        // known as an anonymous call back function 
-        .then(function (response) {
-            var results = response.data;
-
-            for (var i = 0; i < results.length; i++) {
-                var tacoDiv = $("<div>");
-
-                var rating = results[i].rating;
-
-                var p = $("<p>").text("Rating: " + rating);
-
-                var tacoImage = $("<img>");
-                tacoImage.attr("src", results[i].images.fixed_height.url);
-
-                tacoDiv.prepend(p);
-                tacoDiv.prepend(tacoImage);
-                $("#tacos-here").prepend(tacoDiv);
-
-            }
-        });
-
-});
-
-
-
-
