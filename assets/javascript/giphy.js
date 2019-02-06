@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var gifs = ["soft taco", "crunchy taco", "beef taco", "chicken taco", "fish taco", "taco sauce", "taco bell", "del taco", "taco time", "taco cat"];
+    var gifs = ["soft taco", "crunchy taco", "beef taco", "chicken taco", "fish taco", "taco bell", "del taco", "taco time", "taco cat"];
     // kittens === gifs[0]
     // dogs === gifs[1]
     renderBtns();
